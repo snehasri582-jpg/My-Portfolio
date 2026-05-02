@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dadi Sneha Sri | Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          #0f0f23 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        color: #e2e8f0;
+        font-family: "Inter", "Poppins", sans-serif;
+        font-size: 18px;
+        line-height: 1.75;
+        min-height: 100vh;
+      }
+
+      /* NAVBAR */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 8%;
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      nav h2 {
+        color: #ffd700;
+        font-size: 2rem;
+        font-weight: 800;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.45);
+        background: linear-gradient(45deg, #ffd700, #ffed4e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      nav ul li a {
+        color: #e2e8f0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 1rem;
+        position: relative;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: linear-gradient(90deg, #ffd700, #ff6b6b);
+        transition: width 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: #ffd700;
+        transform: translateY(-2px);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      /* HERO */
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 100px 8%;
+        flex-wrap: wrap;
+        background: linear-gradient(
+          135deg,
+          rgba(15, 15, 35, 0.9) 0%,
+          rgba(26, 26, 46, 0.9) 50%,
+          rgba(22, 33, 62, 0.9) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 30% 40%,
+            rgba(255, 215, 0, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 80%,
+            rgba(255, 107, 107, 0.1) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      .hero-text {
+        max-width: 600px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-text h1 {
+        font-size: 72px;
+        font-weight: 800;
+        line-height: 1.05;
+        margin-bottom: 18px;
+        background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-text h3 {
+        font-size: 28px;
+        color: #c3cfe6;
+        margin-bottom: 24px;
+        font-weight: 500;
+      }
+
+      .hero-text span {
+        background: linear-gradient(135deg, #ffd700, #ff6b6b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+      }
+
+      .hero-text p {
+        margin: 28px 0;
+        line-height: 1.85;
+        color: #c3cfe6;
+        font-size: 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 18px 36px;
+        background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+        color: #1a1a2e;
+        border-radius: 50px;
+        text-decoration: none;
+        margin-top: 24px;
+        font-weight: 700;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 28px rgba(255, 215, 0, 0.35);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+      }
+
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      .hero-img {
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 130px;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        position: relative;
+        z-index: 2;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* SECTION */
+      section {
+        padding: 80px 8%;
+        position: relative;
+      }
+
+      .title {
+        font-size: 46px;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 50px;
+        text-align: center;
+        background: linear-gradient(135deg, #ffd700, #ff6b6b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+      }
+
+      /* CARDS */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(22px);
+        padding: 34px;
+        border-radius: 24px;
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ffd700, #ff6b6b);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 20px 60px rgba(255, 215, 0, 0.18);
+        border-color: rgba(255, 215, 0, 0.28);
+      }
+
+      .card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .card h3 {
+        margin-bottom: 18px;
+        color: #ffd700;
+        font-weight: 700;
+        font-size: 24px;
+      }
+
+      .card p {
+        color: #c3cfe6;
+        line-height: 1.85;
+        font-size: 17px;
+      }
+
+      /* SKILLS */
+      .skills span {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 24px;
+        color: #e2e8f0;
+        font-weight: 700;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.09);
+        backdrop-filter: blur(10px);
+        border-radius: 28px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        border: 1px solid rgba(255, 215, 0, 0.22);
+        transition: all 0.3s ease;
+        font-size: 15px;
+      }
+
+      .skills span:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        border-color: #ffd700;
+        background: rgba(255, 215, 0, 0.1);
+      }
+
+      .skills {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .skills span::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(135deg, #ffd700, #ff6b6b);
+        border-radius: 50%;
+        transform: translateY(-50%);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      }
+
+      .skills span::after {
+        content: "";
+        position: absolute;
+        left: 35px;
+        right: 15px;
+        bottom: 8px;
+        height: 2px;
+        background: linear-gradient(90deg, #ffd700, transparent);
+        opacity: 0.6;
+      }
+
+      /* CONTACT */
+      .contact {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        border-radius: 24px;
+        padding: 44px;
+        margin: 42px 0;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .contact h2 {
+        color: #ffffff;
+        margin-bottom: 24px;
+        font-size: 34px;
+      }
+
+      .contact p {
+        color: #c3cfe6;
+        margin: 10px 0;
+        font-size: 19px;
+      }
+
+      .contact a {
+        color: #ffd700;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .contact a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(90deg, #ffd700, #ff6b6b);
+        transition: width 0.3s ease;
+      }
+
+      .contact a:hover {
+        color: #ffed4e;
+      }
+
+      .contact a:hover::after {
+        width: 100%;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        background: rgba(15, 15, 35, 0.8);
+        backdrop-filter: blur(20px);
+        color: #a8b2d1;
+        border-top: 1px solid rgba(255, 215, 0, 0.2);
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #ffd700, transparent);
+      }
+
+      /* MOBILE */
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+        .hero-text h1 {
+          font-size: 40px;
+        }
+        nav {
+          flex-direction: column;
+          gap: 15px;
+        }
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav>
+      <h2>Sneha Sri</h2>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Hello, I'm <span>Dadi Sneha Sri</span></h1>
+        <h3>Web Developer | Full Stack Learner</h3>
+        <p>
+          Detail-oriented Web Development Trainee experienced in building
+          responsive web applications using HTML, CSS, JavaScript, Python, and
+          SQL. Strong in OOP, database management, and frontend-backend
+          integration. Seeking an entry-level Web Developer role to build
+          scalable, user-focused solutions.
+        </p>
+        <a href="#projects" class="btn">View Projects</a>
+      </div>
+
+      <div class="hero-img">
+        <img
+          src="./profile.jpeg"
+          alt="Dadi Sneha Sri - Profile Picture"
+          style="
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          "
+        />
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="title">About Me</h2>
+      <div class="card">
+        <p>
+          I am passionate about creating modern responsive websites and solving
+          technical challenges. I enjoy learning new technologies, practicing
+          frontend applications, debugging code, and building real-world
+          projects.
+        </p>
+        <p>
+          With a strong foundation in web development technologies including
+          HTML, CSS, JavaScript, and Python, I specialize in creating
+          user-centric digital experiences that combine functionality with
+          aesthetic appeal.
+        </p>
+        <p>
+          My experience includes working on full-stack projects, database
+          management, and implementing responsive design principles to ensure
+          optimal performance across all devices and platforms.
+        </p>
+        <p>
+          I thrive in collaborative environments and am committed to continuous
+          learning, staying updated with the latest industry trends and best
+          practices to deliver innovative solutions.
+        </p>
+        <p>
+          Beyond technical skills, I bring strong problem-solving abilities,
+          attention to detail, and a dedication to writing clean, maintainable
+          code that drives business results.
+        </p>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 class="title">Education</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Intermediate</h3>
+          <p>Model School Junior College</p>
+          <p>87%</p>
+          <p>2022 - 2024</p>
+          <p>Dharmaram</p>
+        </div>
+
+        <div class="card">
+          <h3>Class 10</h3>
+          <p>Z.P.H.S Appannapet</p>
+          <p>90%</p>
+          <p>2021 - 2022</p>
+          <p>Appannapeta</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAINING -->
+    <section>
+      <h2 class="title">Internship / Training</h2>
+      <div class="card">
+        <h3>Academy for Careers in Technology - By Freshworks</h3>
+        <p>08/2025 - Current</p>
+        <p>
+          Frontend Development, Backend Development, Full Stack Web Development
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="title">Skills</h2>
+      <div class="skills">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Bootstrap</span>
+        <span>JavaScript</span>
+        <span>Python</span>
+        <span>SQL</span>
+        <span>Problem Solving</span>
+        <span>Teamwork</span>
+        <span>Adaptability</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="title">Projects</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Startup Collaboration Platform</h3>
+          <p>
+            Student–Investor Collaboration Platform for idea sharing and
+            funding.
+          </p>
+          <p><b>Tech:</b> HTML, CSS, JS, Python, SQL</p>
+          <a
+            href="https://snehasri582-jpg.github.io/project/day-1/"
+            target="_blank"
+            class="btn"
+            >Live Project</a
+          >
+        </div>
+
+        <div class="card">
+          <h3>Movie Portal Website</h3>
+          <p>
+            Displays movie details with clean responsive design and better
+            navigation.
+          </p>
+          <a
+            href="https://snehasri582-jpg.github.io/Project1/"
+            target="_blank"
+            class="btn"
+            >Live Project</a
+          >
+        </div>
+
+        <div class="card">
+          <h3>Portfolio Website</h3>
+          <p>
+            Created personal portfolio using HTML & CSS to showcase projects and
+            skills.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Mask Detector</h3>
+          <p>Created mask detection model using Google Teachable Machine.</p>
+          <a href="https://dharvika.weebly.com" target="_blank" class="btn"
+            >View Project</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <h2 class="title">Certifications</h2>
+      <div class="grid">
+        <div class="card"><p>Introduction to HTML - Simplilearn (2025)</p></div>
+        <div class="card"><p>Introduction to CSS - Simplilearn (2025)</p></div>
+        <div class="card">
+          <p>Web Development for Beginners - Simplilearn (2025)</p>
+        </div>
+        <div class="card"><p>Python Intro Course - Nexademy (2026)</p></div>
+        <div class="card"><p>Communication Skills - Simplilearn (2025)</p></div>
+        <div class="card"><p>Public Speaking - Simplilearn (2026)</p></div>
+        <div class="card"><p>Spoken English - Simplilearn (2026)</p></div>
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section>
+      <h2 class="title">Languages</h2>
+      <div class="skills">
+        <span>English</span>
+        <span>Hindi</span>
+        <span>Telugu</span>
+      </div>
+    </section>
+
+    <!-- HOBBIES -->
+    <section>
+      <h2 class="title">Hobbies & Interests</h2>
+      <div class="skills">
+        <span>Exploring New Tools</span>
+        <span>Frontend Practice</span>
+        <span>Debugging</span>
+        <span>Problem Solving</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h2 class="title">Contact Me</h2>
+      <p>
+        Email: <a href="mailto:snehasri582@gmail.com">snehasri582@gmail.com</a>
+      </p>
+      <p>Phone: <a href="tel:9390321619">9390321619</a></p>
+      <p>Location: Appannapeta</p>
+      <p>
+        LinkedIn:
+        <a href="https://www.linkedin.com/in/dadi-sneha-sri" target="_blank"
+          >View Profile</a
+        >
+      </p>
+    </section>
+
+    <footer>© 2026 Dadi Sneha Sri | Professional Portfolio</footer>
+  </body>
+</html>

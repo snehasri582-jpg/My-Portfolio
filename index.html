@@ -324,11 +324,12 @@
         position: relative;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        padding: 14px 24px;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 14px 18px;
         color: #e2e8f0;
         font-weight: 700;
-        text-align: center;
+        text-align: left;
         background: rgba(255, 255, 255, 0.09);
         backdrop-filter: blur(10px);
         border-radius: 28px;
@@ -355,17 +356,15 @@
         text-align: center;
       }
 
-      .skills span::before {
-        content: "";
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        width: 8px;
-        height: 8px;
-        background: linear-gradient(135deg, #ffd700, #ff6b6b);
-        border-radius: 50%;
-        transform: translateY(-50%);
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      .skills span::before,
+      .skills span::after {
+        display: none;
+      }
+
+      .skills span img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
       }
 
       .skills span::after {
@@ -518,32 +517,27 @@
       <h2 class="title">About Me</h2>
       <div class="card">
         <p>
-          I am passionate about creating modern responsive websites and solving
-          technical challenges. I enjoy learning new technologies, practicing
-          frontend applications, debugging code, and building real-world
-          projects.
+          I build modern, responsive websites with clean design and strong
+          usability.
         </p>
         <p>
-          With a strong foundation in web development technologies including
-          HTML, CSS, JavaScript, and Python, I specialize in creating
-          user-centric digital experiences that combine functionality with
-          aesthetic appeal.
+          I work with HTML, CSS, JavaScript, Python, and SQL to deliver
+          user-focused web solutions.
         </p>
         <p>
-          My experience includes working on full-stack projects, database
-          management, and implementing responsive design principles to ensure
-          optimal performance across all devices and platforms.
+          I enjoy learning new technologies, solving problems, and improving my
+          skills every day.
         </p>
-        <p>
-          I thrive in collaborative environments and am committed to continuous
-          learning, staying updated with the latest industry trends and best
-          practices to deliver innovative solutions.
-        </p>
-        <p>
-          Beyond technical skills, I bring strong problem-solving abilities,
-          attention to detail, and a dedication to writing clean, maintainable
-          code that drives business results.
-        </p>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+      <h2 class="title">Achievements</h2>
+      <div class="card">
+        <h3>Showcase Event Winner</h3>
+        <p>Gold medal winner in the Group Discussion round at the Showcase Event hosted by EduNet Foundation.</p>
+        <p>The discussion focused on the impact of artificial intelligence in education and future careers. I contributed points on AI misuse and useful applications, highlighting ethics and responsible innovation.</p>
       </div>
     </section>
 
@@ -585,15 +579,15 @@
     <section id="skills">
       <h2 class="title">Skills</h2>
       <div class="skills">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>Bootstrap</span>
-        <span>JavaScript</span>
-        <span>Python</span>
-        <span>SQL</span>
-        <span>Problem Solving</span>
-        <span>Teamwork</span>
-        <span>Adaptability</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/html5.svg" alt="HTML" width="28" height="28" />HTML</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/css3.svg" alt="CSS" width="28" height="28" />CSS</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bootstrap.svg" alt="Bootstrap" width="28" height="28" />Bootstrap</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/javascript.svg" alt="JavaScript" width="28" height="28" />JavaScript</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" alt="Python" width="28" height="28" />Python</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mysql.svg" alt="SQL" width="28" height="28" />SQL</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/figma.svg" alt="Problem Solving" width="28" height="28" />Problem Solving</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/slack.svg" alt="Teamwork" width="28" height="28" />Teamwork</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/markdown.svg" alt="Adaptability" width="28" height="28" />Adaptability</span>
       </div>
     </section>
 
@@ -605,10 +599,12 @@
         <div class="card">
           <h3>Startup Collaboration Platform</h3>
           <p>
-            Student–Investor Collaboration Platform for idea sharing and
-            funding.
+            A student-investor collaboration platform for sharing startup ideas,
+            collecting feedback, and tracking project progress. Features user
+            registration, idea submission, investor review, and secure data
+            storage.
           </p>
-          <p><b>Tech:</b> HTML, CSS, JS, Python, SQL</p>
+          <p><b>Tech:</b> HTML, CSS, JavaScript, Python, SQL</p>
           <a
             href="https://snehasri582-jpg.github.io/project/day-1/"
             target="_blank"
@@ -620,9 +616,11 @@
         <div class="card">
           <h3>Movie Portal Website</h3>
           <p>
-            Displays movie details with clean responsive design and better
-            navigation.
+            Responsive movie portal with clean navigation, movie cards, and
+            detail views. Designed for easy browsing on desktop and mobile,
+            showcasing storytelling through UI and layout.
           </p>
+          <p><b>Tech:</b> HTML, CSS, JavaScript</p>
           <a
             href="https://snehasri582-jpg.github.io/Project1/"
             target="_blank"
@@ -634,14 +632,21 @@
         <div class="card">
           <h3>Portfolio Website</h3>
           <p>
-            Created personal portfolio using HTML & CSS to showcase projects and
-            skills.
+            A personal portfolio site built to showcase projects, skills,
+            education, and contact details. Focused on responsive design,
+            clear content organization, and professional presentation.
           </p>
+          <p><b>Tech:</b> HTML, CSS</p>
         </div>
 
         <div class="card">
           <h3>Mask Detector</h3>
-          <p>Created mask detection model using Google Teachable Machine.</p>
+          <p>
+            Built a mask detection prototype using Google Teachable Machine.
+            The project detects whether a person is wearing a mask and
+            demonstrates practical use of machine learning for public safety.
+          </p>
+          <p><b>Tech:</b> Teachable Machine, Image Classification</p>
           <a href="https://dharvika.weebly.com" target="_blank" class="btn"
             >View Project</a
           >

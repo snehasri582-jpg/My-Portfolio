@@ -26,6 +26,7 @@
       html {
         scroll-behavior: smooth;
         background: #0f0f23;
+        scroll-padding-top: 100px;
       }
 
       body {
@@ -362,6 +363,35 @@
         transform: scaleX(1);
       }
 
+      .card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+      }
+
+      .card:hover .card-image {
+        opacity: 0.95;
+        z-index: 10;
+      }
+
+      .card-content {
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s ease;
+      }
+
+      .card:hover .card-content {
+        opacity: 0;
+        pointer-events: none;
+      }
+
       .card h3 {
         margin-bottom: 18px;
         color: #ffd700;
@@ -508,54 +538,225 @@
       }
 
       /* MOBILE */
-      @media (max-width: 768px) {
+      @media (max-width: 480px) {
+        nav {
+          padding: 16px 5%;
+          flex-direction: column;
+          gap: 12px;
+        }
+        nav h2 {
+          font-size: 1.4rem;
+        }
+        nav ul {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+          width: 100%;
+        }
+        nav ul li a {
+          font-size: 0.7rem;
+          padding: 8px 4px;
+        }
+        section {
+          padding: 50px 5%;
+        }
+        .title {
+          font-size: 32px;
+          margin-bottom: 30px;
+        }
+        .hero {
+          padding: 50px 5%;
+          gap: 30px;
+        }
+        .hero-text h1 {
+          font-size: 28px;
+        }
+        .hero-text h3 {
+          font-size: 16px;
+        }
+        .hero-text p {
+          font-size: 14px;
+          line-height: 1.6;
+        }
+        .hero-img {
+          width: 150px;
+          height: 150px;
+        }
+        .btn {
+          padding: 12px 24px;
+          font-size: 14px;
+        }
+        .card {
+          padding: 20px;
+          border-radius: 16px;
+        }
+        .card h3 {
+          font-size: 18px;
+          margin-bottom: 12px;
+        }
+        .card p {
+          font-size: 14px;
+          line-height: 1.6;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .skills span {
+          padding: 10px 14px;
+          font-size: 12px;
+          gap: 6px;
+        }
+        .skills span img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      /* TABLET (Small) */
+      @media (min-width: 481px) and (max-width: 768px) {
+        nav {
+          padding: 18px 6%;
+        }
+        section {
+          padding: 60px 6%;
+        }
+        .title {
+          font-size: 38px;
+          margin-bottom: 40px;
+        }
         .hero {
           flex-direction: column;
           text-align: center;
-          min-height: auto;
-          padding: 72px 7%;
-        }
-        .neuro-three {
-          opacity: 0.68;
+          padding: 60px 6%;
+          gap: 40px;
         }
         .hero-text h1 {
           font-size: clamp(30px, 7.8vw, 34px);
-          line-height: 1.12;
-        }
-        .hero-text {
-          width: 100%;
-          max-width: 100%;
-          min-width: 0;
-        }
-        .hero-text h1 span {
-          display: block;
         }
         .hero-text h3 {
           font-size: 20px;
         }
         .hero-text p {
-          font-size: 17px;
-          overflow-wrap: break-word;
+          font-size: 16px;
         }
         .hero-img {
-          width: 240px;
-          height: 240px;
+          width: 200px;
+          height: 200px;
         }
-        nav {
-          flex-direction: column;
-          gap: 15px;
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px;
         }
         nav ul {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 12px;
-          width: 100%;
         }
         nav ul li a {
-          display: block;
           font-size: 0.82rem;
-          text-align: center;
-          white-space: nowrap;
+        }
+      }
+
+      /* TABLET (Large) */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        nav {
+          padding: 20px 7%;
+        }
+        section {
+          padding: 70px 7%;
+        }
+        .title {
+          font-size: 42px;
+          margin-bottom: 45px;
+        }
+        .hero {
+          gap: 40px;
+          padding: 70px 7%;
+        }
+        .hero-text h1 {
+          font-size: 56px;
+        }
+        .hero-text h3 {
+          font-size: 24px;
+        }
+        .hero-text p {
+          font-size: 18px;
+        }
+        .hero-img {
+          width: 280px;
+          height: 280px;
+        }
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 28px;
+        }
+        nav ul {
+          gap: 25px;
+        }
+        nav ul li a {
+          font-size: 0.95rem;
+        }
+      }
+
+      /* DESKTOP / LAPTOP (Large screens) */
+      @media (min-width: 1025px) {
+        nav {
+          padding: 22px 8%;
+        }
+        section {
+          padding: 80px 8%;
+        }
+        .title {
+          font-size: 46px;
+          margin-bottom: 50px;
+        }
+        .hero {
+          padding: 96px 8%;
+          gap: 48px;
+        }
+        .hero-text h1 {
+          font-size: 72px;
+        }
+        .hero-text h3 {
+          font-size: 28px;
+        }
+        .hero-text p {
+          font-size: 20px;
+        }
+        .hero-img {
+          width: 350px;
+          height: 350px;
+        }
+        .grid {
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 30px;
+        }
+        nav ul {
+          gap: 30px;
+        }
+        nav ul li a {
+          font-size: 1rem;
+        }
+      }
+
+      /* Ultra-wide displays */
+      @media (min-width: 1440px) {
+        .hero-text h1 {
+          font-size: 84px;
+        }
+        .hero-img {
+          width: 400px;
+          height: 400px;
+        }
+        .title {
+          font-size: 52px;
+        }
+        section {
+          padding: 100px 10%;
+        }
+        nav {
+          padding: 24px 10%;
         }
       }
     </style>

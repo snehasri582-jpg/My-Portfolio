@@ -25,6 +25,7 @@
 
       html {
         scroll-behavior: smooth;
+        background: #0f0f23;
       }
 
       body {
@@ -34,11 +35,13 @@
           #1a1a2e 50%,
           #16213e 100%
         );
+        background-color: #0f0f23;
         color: #e2e8f0;
         font-family: "Inter", "Poppins", sans-serif;
         font-size: 18px;
         line-height: 1.75;
         min-height: 100vh;
+        overflow-x: hidden;
       }
 
       /* NAVBAR */
@@ -107,16 +110,19 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 100px 8%;
+        gap: 48px;
+        min-height: calc(100vh - 86px);
+        padding: 96px 8%;
         flex-wrap: wrap;
         background: linear-gradient(
           135deg,
-          rgba(15, 15, 35, 0.9) 0%,
-          rgba(26, 26, 46, 0.9) 50%,
-          rgba(22, 33, 62, 0.9) 100%
+          rgba(8, 10, 28, 0.94) 0%,
+          rgba(16, 18, 42, 0.88) 48%,
+          rgba(10, 45, 56, 0.86) 100%
         );
         position: relative;
         overflow: hidden;
+        isolation: isolate;
       }
 
       .hero::before {
@@ -129,14 +135,25 @@
         background:
           radial-gradient(
             circle at 30% 40%,
-            rgba(255, 215, 0, 0.1) 0%,
+            rgba(255, 215, 0, 0.12) 0%,
             transparent 50%
           ),
           radial-gradient(
-            circle at 70% 80%,
-            rgba(255, 107, 107, 0.1) 0%,
+            circle at 78% 70%,
+            rgba(65, 242, 199, 0.13) 0%,
             transparent 50%
           );
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .neuro-three {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0.95;
         pointer-events: none;
       }
 
@@ -144,6 +161,7 @@
         max-width: 600px;
         position: relative;
         z-index: 2;
+        text-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
       }
 
       .hero-text h1 {
@@ -225,15 +243,53 @@
         width: 350px;
         height: 350px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #41f2c7 0%, #ffd700 100%);
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 130px;
-        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.22),
+          0 20px 70px rgba(65, 242, 199, 0.22),
+          0 20px 95px rgba(255, 107, 107, 0.16);
         position: relative;
         z-index: 2;
         animation: float 6s ease-in-out infinite;
+      }
+
+      .hero-img::before,
+      .hero-img::after {
+        content: "";
+        position: absolute;
+        inset: -18px;
+        border-radius: 50%;
+        border: 1px solid rgba(65, 242, 199, 0.46);
+        pointer-events: none;
+      }
+
+      .hero-img::before {
+        animation: spin-orbit 13s linear infinite;
+        border-top-color: rgba(255, 215, 0, 0.95);
+        border-right-color: transparent;
+      }
+
+      .hero-img::after {
+        inset: -32px;
+        animation: spin-orbit 18s linear infinite reverse;
+        border-bottom-color: rgba(255, 107, 107, 0.86);
+        border-left-color: transparent;
+      }
+
+      .hero-img img {
+        position: relative;
+        z-index: 2;
+        border: 4px solid rgba(255, 255, 255, 0.18);
+      }
+
+      @keyframes spin-orbit {
+        to {
+          transform: rotate(360deg);
+        }
       }
 
       @keyframes float {
@@ -365,6 +421,8 @@
         width: 28px;
         height: 28px;
         object-fit: contain;
+        filter: invert(90%) sepia(20%) saturate(900%) hue-rotate(158deg)
+          brightness(103%) contrast(94%);
       }
 
       .skills span::after {
@@ -454,17 +512,50 @@
         .hero {
           flex-direction: column;
           text-align: center;
+          min-height: auto;
+          padding: 72px 7%;
+        }
+        .neuro-three {
+          opacity: 0.68;
         }
         .hero-text h1 {
-          font-size: 40px;
+          font-size: clamp(30px, 7.8vw, 34px);
+          line-height: 1.12;
+        }
+        .hero-text {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+        .hero-text h1 span {
+          display: block;
+        }
+        .hero-text h3 {
+          font-size: 20px;
+        }
+        .hero-text p {
+          font-size: 17px;
+          overflow-wrap: break-word;
+        }
+        .hero-img {
+          width: 240px;
+          height: 240px;
         }
         nav {
           flex-direction: column;
           gap: 15px;
         }
         nav ul {
-          flex-wrap: wrap;
-          justify-content: center;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 12px;
+          width: 100%;
+        }
+        nav ul li a {
+          display: block;
+          font-size: 0.82rem;
+          text-align: center;
+          white-space: nowrap;
         }
       }
     </style>
@@ -486,6 +577,12 @@
 
     <!-- HERO -->
     <section class="hero">
+      <canvas
+        id="neuro-three"
+        class="neuro-three"
+        aria-hidden="true"
+      ></canvas>
+
       <div class="hero-text">
         <h1>Hello, I'm <span>Dadi Sneha Sri</span></h1>
         <h3>Web Developer | Full Stack Learner</h3>
@@ -518,16 +615,13 @@
       <h2 class="title">About Me</h2>
       <div class="card">
         <p>
-          I build modern, responsive websites with clean design and strong
-          usability.
+          I'm a passionate web developer with a strong foundation in modern web technologies and a keen interest in creating user-centric digital experiences. Currently pursuing advanced training in full-stack development, I combine technical expertise with creative problem-solving to build responsive, scalable web applications.
         </p>
         <p>
-          I work with HTML, CSS, JavaScript, Python, and SQL to deliver
-          user-focused web solutions.
+          My journey in web development began with a curiosity about how websites work, and it has evolved into a comprehensive skill set spanning frontend and backend technologies. I specialize in HTML, CSS, JavaScript, and Python, with hands-on experience in building complete web solutions from concept to deployment.
         </p>
         <p>
-          I enjoy learning new technologies, solving problems, and improving my
-          skills every day.
+          Beyond coding, I'm committed to continuous learning and staying updated with the latest industry trends. I believe in writing clean, maintainable code and following best practices that ensure both functionality and user experience excellence. When I'm not coding, you'll find me exploring new tools, debugging complex problems, or contributing to open-source projects.
         </p>
       </div>
     </section>
@@ -576,9 +670,13 @@
       <h2 class="title">Internship / Training</h2>
       <div class="card">
         <h3>Academy for Careers in Technology - By Freshworks</h3>
-        <p>08/2025 - Current</p>
+        <p><strong>Duration:</strong> August 2025 - Current</p>
+        <p><strong>Focus Areas:</strong> Frontend Development, Backend Development, Full Stack Web Development</p>
         <p>
-          Frontend Development, Backend Development, Full Stack Web Development
+          Intensive training program covering modern web development technologies including HTML5, CSS3, JavaScript (ES6+), Python, SQL databases, and responsive design principles. Hands-on projects involving real-world applications, API integration, and deployment strategies.
+        </p>
+        <p>
+          <strong>Key Learnings:</strong> Building scalable web applications, implementing responsive designs, database management, version control with Git, and collaborative development practices. Gained experience in both frontend frameworks and backend technologies.
         </p>
       </div>
     </section>
@@ -619,6 +717,7 @@
             height="28"
           />JavaScript</span
         >
+        
         <span
           ><img
             src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg"
@@ -707,7 +806,7 @@
             education, and contact details. Focused on responsive design, clear
             content organization, and professional presentation.
           </p>
-          <p><b>Tech:</b> HTML, CSS</p>
+          <p><b>Tech:</b> HTML, CSS, JavaScript, Three.js</p>
         </div>
 
         <div class="card">
@@ -741,24 +840,14 @@
       </div>
     </section>
 
-    <!-- LANGUAGES -->
-    <section>
-      <h2 class="title">Languages</h2>
-      <div class="skills">
-        <span>English</span>
-        <span>Hindi</span>
-        <span>Telugu</span>
-      </div>
-    </section>
-
     <!-- HOBBIES -->
     <section>
       <h2 class="title">Hobbies & Interests</h2>
       <div class="skills">
-        <span>Exploring New Tools</span>
-        <span>Frontend Practice</span>
-        <span>Debugging</span>
-        <span>Problem Solving</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/visualstudiocode.svg" alt="Exploring New Tools" width="24" height="24">Exploring New Tools</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/react.svg" alt="Frontend Practice" width="24" height="24">Frontend Practice</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" alt="Debugging" width="24" height="24">Debugging</span>
+        <span><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/codeforces.svg" alt="Problem Solving" width="24" height="24">Problem Solving</span>
       </div>
     </section>
 
@@ -778,6 +867,417 @@
       </p>
     </section>
 
-    <footer>© 2026 Dadi Sneha Sri | Professional Portfolio</footer>
+    <footer>&copy; 2026 Dadi Sneha Sri | Professional Portfolio</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      (() => {
+        const canvas = document.getElementById("neuro-three");
+        if (!canvas) return;
+
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        const runCanvasFallback = () => {
+          const context = canvas.getContext("2d");
+          if (!context) return;
+
+          let width = 0;
+          let height = 0;
+          let dpr = 1;
+          let nodes = [];
+
+          const resize = () => {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            width = Math.max(1, Math.floor(rect.width));
+            height = Math.max(1, Math.floor(rect.height));
+            dpr = Math.min(window.devicePixelRatio || 1, 1.7);
+            canvas.width = Math.floor(width * dpr);
+            canvas.height = Math.floor(height * dpr);
+            context.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            const nodeCount = width < 768 ? 54 : 96;
+            nodes = Array.from({ length: nodeCount }, (_, index) => ({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.35,
+              vy: (Math.random() - 0.5) * 0.35,
+              phase: index * 0.37,
+            }));
+          };
+
+          const draw = (stamp = 0) => {
+            const time = stamp * 0.001;
+            context.clearRect(0, 0, width, height);
+            context.globalCompositeOperation = "lighter";
+
+            for (const node of nodes) {
+              if (!prefersReducedMotion) {
+                node.x += node.vx + Math.sin(time + node.phase) * 0.08;
+                node.y +=
+                  node.vy + Math.cos(time * 0.8 + node.phase) * 0.08;
+              }
+
+              if (node.x < 0 || node.x > width) node.vx *= -1;
+              if (node.y < 0 || node.y > height) node.vy *= -1;
+            }
+
+            for (let i = 0; i < nodes.length; i += 1) {
+              for (let j = i + 1; j < nodes.length; j += 2) {
+                const first = nodes[i];
+                const second = nodes[j];
+                const dx = first.x - second.x;
+                const dy = first.y - second.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 145) {
+                  const alpha = (1 - distance / 145) * 0.35;
+                  context.strokeStyle = `rgba(65, 242, 199, ${alpha})`;
+                  context.lineWidth = 1;
+                  context.beginPath();
+                  context.moveTo(first.x, first.y);
+                  context.lineTo(second.x, second.y);
+                  context.stroke();
+                }
+              }
+            }
+
+            for (const node of nodes) {
+              const glow = 2.5 + Math.sin(time * 2 + node.phase) * 1.2;
+              context.fillStyle = "rgba(255, 215, 0, 0.82)";
+              context.beginPath();
+              context.arc(node.x, node.y, glow, 0, Math.PI * 2);
+              context.fill();
+            }
+
+            if (!prefersReducedMotion) requestAnimationFrame(draw);
+          };
+
+          resize();
+          window.addEventListener("resize", resize, { passive: true });
+          requestAnimationFrame(draw);
+        };
+
+        const runNeuroThree = () => {
+          if (!window.THREE) {
+            runCanvasFallback();
+            return;
+          }
+
+          const THREE = window.THREE;
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+          const pointer = { x: 0, y: 0 };
+          const heroGroup = new THREE.Group();
+          const isMobile = window.matchMedia("(max-width: 768px)").matches;
+          const nodeCount = isMobile ? 116 : 220;
+          const positions = new Float32Array(nodeCount * 3);
+          const origins = new Float32Array(nodeCount * 3);
+          const colors = new Float32Array(nodeCount * 3);
+          const scales = new Float32Array(nodeCount);
+          const phases = new Float32Array(nodeCount);
+          const speeds = new Float32Array(nodeCount);
+          const palette = [
+            new THREE.Color(0x41f2c7),
+            new THREE.Color(0xffd700),
+            new THREE.Color(0xff6b6b),
+            new THREE.Color(0x8bd7ff),
+          ];
+
+          let renderer;
+
+          try {
+            renderer = new THREE.WebGLRenderer({
+              canvas,
+              antialias: true,
+              alpha: true,
+              preserveDrawingBuffer: true,
+              powerPreference: "high-performance",
+            });
+          } catch (error) {
+            runCanvasFallback();
+            return;
+          }
+
+          renderer.setClearColor(0x000000, 0);
+          if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
+
+          scene.add(heroGroup);
+          camera.position.set(0, 0, isMobile ? 13 : 10.8);
+
+          for (let i = 0; i < nodeCount; i += 1) {
+            const index = i * 3;
+            const radius = 1.35 + Math.random() * 4.4;
+            const theta = Math.acos(Math.random() * 2 - 1);
+            const phi = Math.random() * Math.PI * 2;
+            const lobe = Math.sin(phi * 2.2) * 0.38;
+            const x = Math.sin(theta) * Math.cos(phi) * radius * 1.36;
+            const y = Math.sin(theta) * Math.sin(phi) * radius * 0.72 + lobe;
+            const z = Math.cos(theta) * radius * 0.92;
+            const color = palette[i % palette.length];
+
+            origins[index] = x;
+            origins[index + 1] = y;
+            origins[index + 2] = z;
+            positions[index] = x;
+            positions[index + 1] = y;
+            positions[index + 2] = z;
+            colors[index] = color.r;
+            colors[index + 1] = color.g;
+            colors[index + 2] = color.b;
+            scales[i] = 7 + Math.random() * 18;
+            phases[i] = Math.random() * Math.PI * 2;
+            speeds[i] = 0.42 + Math.random() * 1.3;
+          }
+
+          const pointGeometry = new THREE.BufferGeometry();
+          pointGeometry.setAttribute(
+            "position",
+            new THREE.BufferAttribute(positions, 3)
+          );
+          pointGeometry.setAttribute(
+            "color",
+            new THREE.BufferAttribute(colors, 3)
+          );
+          pointGeometry.setAttribute(
+            "scale",
+            new THREE.BufferAttribute(scales, 1)
+          );
+
+          const pointMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+              uTime: { value: 0 },
+              uPixelRatio: {
+                value: Math.min(window.devicePixelRatio || 1, 1.7),
+              },
+            },
+            vertexShader: `
+              attribute float scale;
+              attribute vec3 color;
+              varying vec3 vColor;
+              uniform float uTime;
+              uniform float uPixelRatio;
+
+              void main() {
+                vColor = color;
+                vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
+                float pulse = 0.78 + sin(uTime * 2.1 + position.x * 1.7) * 0.22;
+                gl_PointSize = scale * pulse * uPixelRatio * (11.0 / -modelViewPosition.z);
+                gl_Position = projectionMatrix * modelViewPosition;
+              }
+            `,
+            fragmentShader: `
+              varying vec3 vColor;
+
+              void main() {
+                float distanceToCenter = distance(gl_PointCoord, vec2(0.5));
+                float core = smoothstep(0.5, 0.0, distanceToCenter);
+                float halo = smoothstep(0.5, 0.18, distanceToCenter) * 0.42;
+                gl_FragColor = vec4(vColor, core + halo);
+              }
+            `,
+            transparent: true,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending,
+          });
+
+          const points = new THREE.Points(pointGeometry, pointMaterial);
+          heroGroup.add(points);
+
+          const lineGeometry = new THREE.BufferGeometry();
+          const lineMaterial = new THREE.LineBasicMaterial({
+            transparent: true,
+            opacity: isMobile ? 0.24 : 0.34,
+            vertexColors: true,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending,
+          });
+          const synapses = new THREE.LineSegments(lineGeometry, lineMaterial);
+          heroGroup.add(synapses);
+
+          const coreMaterial = new THREE.MeshBasicMaterial({
+            color: 0x41f2c7,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.45,
+            blending: THREE.AdditiveBlending,
+          });
+          const core = new THREE.Mesh(
+            new THREE.IcosahedronBufferGeometry(1.05, 3),
+            coreMaterial
+          );
+          heroGroup.add(core);
+
+          const glow = new THREE.Mesh(
+            new THREE.IcosahedronBufferGeometry(1.25, 2),
+            new THREE.MeshBasicMaterial({
+              color: 0xffd700,
+              transparent: true,
+              opacity: 0.08,
+              blending: THREE.AdditiveBlending,
+              depthWrite: false,
+            })
+          );
+          heroGroup.add(glow);
+
+          const ringColors = [0xffd700, 0xff6b6b, 0x41f2c7];
+          const rings = ringColors.map((color, index) => {
+            const ring = new THREE.Mesh(
+              new THREE.TorusBufferGeometry(1.82 + index * 0.38, 0.01, 8, 160),
+              new THREE.MeshBasicMaterial({
+                color,
+                transparent: true,
+                opacity: 0.35 - index * 0.05,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+              })
+            );
+            ring.rotation.set(
+              index * 0.72,
+              Math.PI / 2.4 + index * 0.28,
+              index * 0.36
+            );
+            heroGroup.add(ring);
+            return ring;
+          });
+
+          const updateSynapses = () => {
+            const linePositions = [];
+            const lineColors = [];
+            const threshold = isMobile ? 1.72 : 1.95;
+            const maxLines = isMobile ? 280 : 760;
+            let lineCount = 0;
+
+            for (let i = 0; i < nodeCount; i += 1) {
+              const ia = i * 3;
+
+              for (let j = i + 1; j < nodeCount; j += isMobile ? 3 : 2) {
+                const ja = j * 3;
+                const dx = positions[ia] - positions[ja];
+                const dy = positions[ia + 1] - positions[ja + 1];
+                const dz = positions[ia + 2] - positions[ja + 2];
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                if (distance < threshold) {
+                  const strength = (1 - distance / threshold) * 0.82;
+
+                  linePositions.push(
+                    positions[ia],
+                    positions[ia + 1],
+                    positions[ia + 2],
+                    positions[ja],
+                    positions[ja + 1],
+                    positions[ja + 2]
+                  );
+
+                  lineColors.push(
+                    colors[ia] * strength,
+                    colors[ia + 1] * strength,
+                    colors[ia + 2] * strength,
+                    colors[ja] * strength,
+                    colors[ja + 1] * strength,
+                    colors[ja + 2] * strength
+                  );
+
+                  lineCount += 1;
+                  if (lineCount >= maxLines) break;
+                }
+              }
+
+              if (lineCount >= maxLines) break;
+            }
+
+            lineGeometry.setAttribute(
+              "position",
+              new THREE.Float32BufferAttribute(linePositions, 3)
+            );
+            lineGeometry.setAttribute(
+              "color",
+              new THREE.Float32BufferAttribute(lineColors, 3)
+            );
+          };
+
+          const resize = () => {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            const width = Math.max(1, Math.floor(rect.width));
+            const height = Math.max(1, Math.floor(rect.height));
+            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.7);
+
+            renderer.setPixelRatio(pixelRatio);
+            renderer.setSize(width, height, false);
+            camera.aspect = width / height;
+            camera.position.z = width < 768 ? 13.4 : 10.8;
+            camera.updateProjectionMatrix();
+            pointMaterial.uniforms.uPixelRatio.value = pixelRatio;
+            heroGroup.scale.setScalar(width < 768 ? 0.82 : 1);
+          };
+
+          const render = (stamp = 0) => {
+            const time = prefersReducedMotion ? 0.7 : stamp * 0.001;
+            pointMaterial.uniforms.uTime.value = time;
+
+            for (let i = 0; i < nodeCount; i += 1) {
+              const index = i * 3;
+              const ox = origins[index];
+              const oy = origins[index + 1];
+              const oz = origins[index + 2];
+              const wave = Math.sin(time * speeds[i] + phases[i]);
+              const orbit = Math.cos(time * 0.38 + phases[i]) * 0.07;
+
+              positions[index] =
+                ox * (1 + wave * 0.035) + Math.sin(time + oy) * 0.07;
+              positions[index + 1] =
+                oy * (1 + Math.cos(time * 0.8 + phases[i]) * 0.045) +
+                Math.sin(time * 0.75 + oz) * 0.05;
+              positions[index + 2] = oz * (1 + wave * 0.03) + orbit;
+            }
+
+            pointGeometry.attributes.position.needsUpdate = true;
+            updateSynapses();
+
+            core.rotation.x = time * 0.28;
+            core.rotation.y = time * 0.44;
+            glow.rotation.copy(core.rotation);
+
+            rings.forEach((ring, index) => {
+              ring.rotation.x += 0.0025 + index * 0.0009;
+              ring.rotation.y += 0.0035 + index * 0.0011;
+            });
+
+            heroGroup.rotation.y +=
+              (pointer.x * 0.24 - heroGroup.rotation.y) * 0.035;
+            heroGroup.rotation.x +=
+              (-pointer.y * 0.14 - heroGroup.rotation.x) * 0.035;
+            renderer.render(scene, camera);
+
+            if (!prefersReducedMotion) requestAnimationFrame(render);
+          };
+
+          window.addEventListener(
+            "pointermove",
+            (event) => {
+              const rect = canvas.getBoundingClientRect();
+              pointer.x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+              pointer.y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+            },
+            { passive: true }
+          );
+
+          window.addEventListener(
+            "resize",
+            () => {
+              resize();
+              if (prefersReducedMotion) render();
+            },
+            { passive: true }
+          );
+
+          resize();
+          render();
+        };
+
+        runNeuroThree();
+      })();
+    </script>
   </body>
 </html>
